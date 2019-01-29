@@ -1,8 +1,8 @@
-# dofiles
+# dotfiles
 
 Based on [Sam Soffes](https://github.com/soffes/dotfiles) and [George Hotz](https://github.com/geohot/configuration).
 
-Installation
+## Installation
 
 ```
 cd ~
