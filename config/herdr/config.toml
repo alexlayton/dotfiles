@@ -1,0 +1,44 @@
+# Herdr counterpart to ../../tmux.conf.
+onboarding = false
+
+[ui]
+# Show the active workspace and tab, without the machine name.
+window_title = "{workspace}: {tab}"
+hide_tab_bar_when_single_tab = true
+prompt_new_workspace_name = true
+show_agent_labels_on_pane_borders = true
+
+[keys]
+prefix = "ctrl+space"
+
+# Keep the old shortcut too. prefix+n normally selects the next tab,
+# so move that action to prefix+right.
+new_workspace = ["prefix+n", "prefix+shift+n"]
+next_tab = "prefix+right"
+
+# Add prefix+t for new tabs, while keeping the default prefix+c.
+new_tab = ["prefix+c", "prefix+t"]
+
+# tmux: h splits side by side; v stacks panes. Herdr names these
+# split_vertical and split_horizontal, respectively.
+split_vertical = "prefix+h"
+split_horizontal = "prefix+v"
+
+# Match the tmux home-row pane movement cluster.
+focus_pane_up = "prefix+e"
+focus_pane_left = "prefix+s"
+focus_pane_down = "prefix+d"
+focus_pane_right = "prefix+f"
+
+# Use the same directions when Herdr's navigate mode is open.
+navigate_pane_up = "e"
+navigate_pane_left = "s"
+navigate_pane_down = "d"
+navigate_pane_right = "f"
+
+# tmux uses prefix+r to reload. Move the displaced Herdr actions
+# so settings, scrollback, and resize mode remain available.
+reload_config = "prefix+r"
+resize_mode = "prefix+shift+r"
+settings = "prefix+shift+s"
+edit_scrollback = "prefix+shift+e"
