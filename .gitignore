@@ -1,8 +1,9 @@
 .DS_Store
 .dotfiles-backup/
 
-# Keep local fish credentials out of the repository.
+# Keep local fish credentials and generated universal variables out of the repository.
 /config/fish/secrets.fish
+/config/fish/fish_variables
 
 # Herdr keeps logs, sockets, and session data beside its config.
 /config/herdr/*

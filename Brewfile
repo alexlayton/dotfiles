@@ -1,7 +1,6 @@
-tap "homebrew/bundle"
-
 # Shell
 brew "fish"
+brew "tmux"
 
 # Languages/toolchains
 # Note: the Homebrew formula for rustup is named rustup-init

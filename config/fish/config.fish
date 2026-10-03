@@ -18,8 +18,13 @@ else if test -x /home/linuxbrew/.linuxbrew/bin/brew
     /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
 end
 
-# Ensure ~/.local/bin is on PATH if it exists
 fish_add_path ~/.local/bin
+if type -q brew
+    set -l rustup_prefix (brew --prefix rustup 2>/dev/null)
+    if test -n "$rustup_prefix"; and test -d "$rustup_prefix/bin"
+        fish_add_path "$rustup_prefix/bin"
+    end
+end
 
 # Source all files in conf.d automatically ( Fish does this by default, but
 # keeping the comment as a reminder that conf.d/ is the place for extras.)

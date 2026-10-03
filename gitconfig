@@ -12,7 +12,12 @@
 [pull]
     rebase = false
 
-# Add your own details here:
-# [user]
-#     name = Your Name
-#     email = your@email.com
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[user]
+    name = Alex Layton
+    email = hi@alexlayton.co
