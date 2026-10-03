@@ -1,5 +1,11 @@
 # ~/.config/fish/config.fish
 
+set -l config_dir (dirname (status --current-filename))
+set -l secrets "$config_dir/secrets.fish"
+if test -f "$secrets"
+    source "$secrets"
+end
+
 # Default editor — change this to 'zed --wait' if you prefer Zed
 set -gx EDITOR "code --wait"
 

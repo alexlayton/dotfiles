@@ -52,6 +52,22 @@ Run `./install.sh` again after adding new files or directories.
 If a real file already exists at the destination, it is backed up to
 `~/.dotfiles-backup/<timestamp>/` before the symlink is created.
 
+## Local secrets
+
+Fish loads `~/.config/fish/secrets.fish` when it starts, if the file exists.
+After `./install.sh`, `~/.config/fish` links to this repo's `config/fish/`.
+Create your local secrets file from the example:
+
+```bash
+cp ~/.config/fish/secrets.fish.example ~/.config/fish/secrets.fish
+chmod 600 ~/.config/fish/secrets.fish
+```
+
+Edit `~/.config/fish/secrets.fish` and replace the placeholder key with your
+own values. Start a new fish shell to load them. The real `secrets.fish` is
+ignored by Git; do not put real secrets in the tracked example or other
+tracked files.
+
 ## What's installed on macOS
 
 From `Brewfile`:
