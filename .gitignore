@@ -8,3 +8,6 @@
 # Herdr keeps logs, sockets, and session data beside its config.
 /config/herdr/*
 !/config/herdr/config.toml
+
+# macOS metadata
+.DS_Store
