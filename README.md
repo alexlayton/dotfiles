@@ -19,7 +19,8 @@ casks declared in `Brewfile`, and switches your login shell to fish:
    ./bootstrap.sh
    ```
 
-3. Symlink the configs into place:
+3. Symlink the configs into place. This also installs bun and harness with
+their official installers (skipped if already installed):
 
    ```bash
    ./install.sh
@@ -30,7 +31,7 @@ casks declared in `Brewfile`, and switches your login shell to fish:
 ## Linux setup
 
 On Linux the bootstrap script is skipped; install fish via your package manager,
-then symlink the configs:
+then symlink the configs (this also installs bun and harness):
 
 ```bash
 git clone https://github.com/alexlayton/dotfiles.git ~/.dotfiles
@@ -72,5 +73,5 @@ tracked files.
 
 From `Brewfile`:
 
-- **Formulae:** `fish`, `rustup-init`, `uv`
-- **Casks:** `firefox`, `visual-studio-code`, `zed`
+- **Formulae:** `fish`, `tmux`, `rustup-init`, `uv`
+- **Casks:** `firefox`, `ghostty`, `visual-studio-code`, `zed`

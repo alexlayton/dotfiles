@@ -28,3 +28,7 @@ end
 
 # Source all files in conf.d automatically ( Fish does this by default, but
 # keeping the comment as a reminder that conf.d/ is the place for extras.)
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

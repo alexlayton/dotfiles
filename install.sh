@@ -70,4 +70,22 @@ for item in "$REPO_DIR"/*; do
   fi
 done
 
+# Install tools that ship their own installers. Each step is skipped if the
+# tool is already present, so re-running this script is safe.
+echo "==> Installing tools"
+
+if [[ -x "$HOME/.bun/bin/bun" ]]; then
+  echo "OK bun"
+else
+  echo "==> Installing bun..."
+  curl -fsSL https://bun.sh/install | bash
+fi
+
+if [[ -x "$HOME/.local/bin/harness" ]]; then
+  echo "OK harness"
+else
+  echo "==> Installing harness..."
+  curl -fsSL https://raw.githubusercontent.com/alexlayton/harness/main/install.sh | bash
+fi
+
 echo "==> Done"
