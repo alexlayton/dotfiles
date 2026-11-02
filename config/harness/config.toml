@@ -1,0 +1,22 @@
+provider = "anthropic-claude"
+model = "claude-opus-5-5"
+reasoning_effort = "medium"
+rtk = true
+
+[code_mode]
+enabled = true
+
+[secrets]
+env = ["OPENROUTER_API_KEY", "OPENCODE_API_KEY"]
+
+[[mcp.servers]]
+name = "safari"
+transport = "stdio"
+command = "bunx"
+args = [
+    "safari-mcp",
+]
+
+[prewalk]
+model = "anthropic-claude:claude-sonnet-5-5"
+enabled = true

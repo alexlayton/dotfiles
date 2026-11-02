@@ -9,6 +9,10 @@ brew "rustup-init"
 # Python tooling
 brew "uv"
 
+# CLI tools
+brew "gh"
+brew "rtk"
+
 # Apps
 cask "firefox"
 cask "ghostty"

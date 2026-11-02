@@ -11,3 +11,7 @@
 
 # macOS metadata
 .DS_Store
+
+# Harness keeps credentials and lock files beside its config.
+/config/harness/*
+!/config/harness/config.toml
