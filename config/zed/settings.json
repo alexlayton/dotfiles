@@ -2,6 +2,15 @@
 // Mirrors config/nvim where Zed allows it. Keybindings live in keymap.json.
 // See https://zed.dev/docs/reference/all-settings
 {
+  "agent_servers": {
+    "harness": {
+      "type": "custom",
+      "command": "~/.local/bin/harness",
+      "args": [
+        "acp"
+      ]
+    }
+  },
   "cli_default_open_behavior": "new_window",
 
   // Theme: Melange, same as Neovim (extension installed automatically).
