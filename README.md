@@ -94,7 +94,7 @@ From `Brewfile`:
 
 - **Formulae:** `fish`, `tmux`, `rustup-init`, `uv`, `gh`, `rtk`, `neovim`,
   `tree-sitter-cli`, `ripgrep`, `fd`, `fzf`
-- **Casks:** `firefox`, `ghostty`, `visual-studio-code`, `zed`
+- **Casks:** `firefox`, `ghostty`, `zed`
 
 ## Python tooling
 

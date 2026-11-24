@@ -24,5 +24,4 @@ brew "fzf"
 # Apps
 cask "firefox"
 cask "ghostty"
-cask "visual-studio-code"
 cask "zed"
