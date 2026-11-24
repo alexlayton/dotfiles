@@ -1,7 +1,7 @@
 # ~/.config/fish/config.fish
+# Keep startup fast: avoid spawning external processes (brew, dirname, ...).
 
-set -l config_dir (dirname (status --current-filename))
-set -l secrets "$config_dir/secrets.fish"
+set -l secrets "$__fish_config_dir/secrets.fish"
 if test -f "$secrets"
     source "$secrets"
 end
@@ -9,26 +9,38 @@ end
 # Default editor
 set -gx EDITOR nvim
 
-# Homebrew shellenv support for macOS (Apple Silicon + Intel) and Linuxbrew
-if test -x /opt/homebrew/bin/brew
-    /opt/homebrew/bin/brew shellenv | source
-else if test -x /usr/local/bin/brew
-    /usr/local/bin/brew shellenv | source
-else if test -x /home/linuxbrew/.linuxbrew/bin/brew
-    /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
+# Homebrew (Apple Silicon, Intel macOS, Linuxbrew).
+# Static equivalent of `brew shellenv`, which costs ~15 ms per shell.
+if not set -q HOMEBREW_PREFIX
+    for prefix in /opt/homebrew /usr/local /home/linuxbrew/.linuxbrew
+        if test -x $prefix/bin/brew
+            set -gx HOMEBREW_PREFIX $prefix
+            set -gx HOMEBREW_CELLAR $prefix/Cellar
+            if test $prefix = /opt/homebrew
+                set -gx HOMEBREW_REPOSITORY $prefix
+            else
+                set -gx HOMEBREW_REPOSITORY $prefix/Homebrew
+            end
+            break
+        end
+    end
 end
+if set -q HOMEBREW_PREFIX
+    fish_add_path --global --move --path $HOMEBREW_PREFIX/bin $HOMEBREW_PREFIX/sbin
+    if test -n "$MANPATH"
+        set -gx MANPATH (string replace --regex '^:*(.*?):*$' ':$1' -- "$MANPATH")
+    end
+    contains -- $HOMEBREW_PREFIX/share/info $INFOPATH
+    or set -gx INFOPATH $HOMEBREW_PREFIX/share/info $INFOPATH
 
-fish_add_path ~/.local/bin
-if type -q brew
-    set -l rustup_prefix (brew --prefix rustup 2>/dev/null)
-    if test -n "$rustup_prefix"; and test -d "$rustup_prefix/bin"
-        fish_add_path "$rustup_prefix/bin"
+    # rustup is keg-only; use the stable opt/ symlink instead of `brew --prefix`.
+    if test -d $HOMEBREW_PREFIX/opt/rustup/bin
+        fish_add_path --global $HOMEBREW_PREFIX/opt/rustup/bin
     end
 end
 
-# Source all files in conf.d automatically ( Fish does this by default, but
-# keeping the comment as a reminder that conf.d/ is the place for extras.)
+fish_add_path --global ~/.local/bin
 
 # bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+set -gx BUN_INSTALL "$HOME/.bun"
+fish_add_path --global $BUN_INSTALL/bin
