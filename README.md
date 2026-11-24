@@ -95,3 +95,10 @@ From `Brewfile`:
 - **Formulae:** `fish`, `tmux`, `rustup-init`, `uv`, `gh`, `rtk`, `neovim`,
   `tree-sitter-cli`, `ripgrep`, `fd`, `fzf`
 - **Casks:** `firefox`, `ghostty`, `visual-studio-code`, `zed`
+
+## Python tooling
+
+`install.sh` installs `ty` (the Python type checker and language server Neovim
+uses) with `uv tool install ty@latest`. Update it with `uv tool upgrade ty`.
+Fish completions for it live in `config/fish/completions/ty.fish`.
+

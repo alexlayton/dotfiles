@@ -81,6 +81,17 @@ else
   curl -fsSL https://bun.sh/install | bash
 fi
 
+# ty (Python type checker / language server, used by Neovim) via uv.
+# uv comes from the Brewfile on macOS; update later with: uv tool upgrade ty
+if [[ -x "$HOME/.local/bin/ty" ]]; then
+  echo "OK ty"
+elif command -v uv >/dev/null 2>&1; then
+  echo "==> Installing ty..."
+  uv tool install ty@latest
+else
+  echo "SKIP ty (uv not found; install uv, then re-run)"
+fi
+
 if [[ -x "$HOME/.local/bin/harness" ]]; then
   echo "OK harness"
 else
