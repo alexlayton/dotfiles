@@ -43,6 +43,14 @@
     "dock": "left",
   },
 
+  // Agent panel (and its threads sidebar) on the right; the file tree is on the left.
+  "agent": {
+    "dock": "right",
+    "threads_sidebar": {
+      "position": "right",
+    },
+  },
+
   // Language servers, as in lsp.lua.
   "lsp": {
     "rust-analyzer": {
