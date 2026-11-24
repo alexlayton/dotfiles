@@ -102,3 +102,11 @@ From `Brewfile`:
 uses) with `uv tool install ty@latest`. Update it with `uv tool upgrade ty`.
 Fish completions for it live in `config/fish/completions/ty.fish`.
 
+## Zed
+
+`config/zed/settings.json` and `config/zed/keymap.json` mirror the Neovim setup
+where Zed allows it: the Melange theme (installed automatically), vim mode with
+relative line numbers, `jj` for Esc, the same `<Space>` leader maps (find, code,
+git, `<Space>e` for the file tree), ty + ruff for Python, and clippy for Rust.
+The project panel is docked on the left, overriding Zed's newer right-side
+default. Other files Zed creates in `~/.config/zed` are ignored by Git.

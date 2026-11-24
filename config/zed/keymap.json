@@ -1,0 +1,53 @@
+// Zed keymap. Symlinked to ~/.config/zed/keymap.json by install.sh.
+// Mirrors the key maps in config/nvim (Space is the leader).
+// See https://zed.dev/docs/vim and https://zed.dev/docs/key-bindings
+[
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "j j": "vim::NormalBefore", // jj leaves insert mode
+    },
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      // Files and finding (<leader>f... in plugins.lua)
+      "space space": "tab_switcher::Toggle",
+      "space f f": "file_finder::Toggle",
+      "space f g": "pane::DeploySearch",
+      "space f d": "diagnostics::Deploy",
+      "space f s": "outline::Toggle",
+      "space f S": "project_symbols::Toggle",
+      "space f k": "zed::OpenKeymap",
+      "space e": "project_panel::ToggleFocus",
+      "space w": "workspace::Save",
+
+      // Code (<leader>c...)
+      "space c f": "editor::Format",
+      "space c h": "editor::ToggleInlayHints",
+      "space q": "diagnostics::Deploy",
+
+      // Git (<leader>g...)
+      "space g p": "editor::ToggleSelectedDiffHunks",
+      "space g s": "git::ToggleStaged",
+      "space g r": "git::Restore",
+      "space g b": "editor::ToggleGitBlameInline",
+      "space g d": "git::Diff",
+
+      // Neovim's built-in LSP maps
+      "g r n": "editor::Rename",
+      "g r a": "editor::ToggleCodeActions",
+      "g r r": "editor::FindAllReferences",
+      "g r i": "editor::GoToImplementation",
+      "g r t": "editor::GoToTypeDefinition",
+      "g O": "outline::Toggle",
+    },
+  },
+  {
+    // In the file tree, Space e returns to the editor, like toggling neo-tree.
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock",
+    },
+  },
+]

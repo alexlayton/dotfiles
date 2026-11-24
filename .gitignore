@@ -15,3 +15,8 @@
 # Harness keeps credentials and lock files beside its config.
 /config/harness/*
 !/config/harness/config.toml
+
+# Zed keeps prompts, themes, and other local data beside its settings.
+/config/zed/*
+!/config/zed/settings.json
+!/config/zed/keymap.json

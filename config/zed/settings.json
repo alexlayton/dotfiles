@@ -1,0 +1,65 @@
+// Zed user settings. Symlinked to ~/.config/zed/settings.json by install.sh.
+// Mirrors config/nvim where Zed allows it. Keybindings live in keymap.json.
+// See https://zed.dev/docs/reference/all-settings
+{
+  "cli_default_open_behavior": "new_window",
+
+  // Theme: Melange, same as Neovim (extension installed automatically).
+  "auto_install_extensions": {
+    "melange": true,
+  },
+  "theme": {
+    "mode": "system",
+    "light": "Melange Light",
+    "dark": "Melange Dark",
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+
+  // Vim mode, set up like options.lua.
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always", // clipboard = unnamedplus
+    "use_smartcase_find": true, // f/t/; match case only when you type a capital
+    "highlight_on_yank_duration": 200,
+  },
+  "relative_line_numbers": "enabled",
+  "vertical_scroll_margin": 8, // scrolloff = 8
+  "horizontal_scroll_margin": 8,
+  "soft_wrap": "none",
+  "tab_size": 4,
+  "hard_tabs": false,
+  "show_whitespaces": "boundary",
+  "current_line_highlight": "line",
+  "format_on_save": "on",
+  "inlay_hints": {
+    "enabled": true,
+  },
+  "restore_on_startup": "last_session",
+
+  // Zed moved the project panel (file tree) to the right dock by default;
+  // keep it on the left, like neo-tree.
+  "project_panel": {
+    "dock": "left",
+  },
+
+  // Language servers, as in lsp.lua.
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": { "command": "clippy" },
+      },
+    },
+  },
+  "languages": {
+    "Python": {
+      // ty for types, ruff for lint and format. Zed's default Python servers are off.
+      "language_servers": ["ty", "ruff", "!basedpyright", "!pyright", "!pylsp", "..."],
+      "format_on_save": "on",
+      "formatter": [
+        { "code_action": "source.organizeImports.ruff" },
+        { "language_server": { "name": "ruff" } },
+      ],
+    },
+  },
+}
