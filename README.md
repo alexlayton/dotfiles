@@ -53,6 +53,25 @@ Run `./install.sh` again after adding new files or directories.
 If a real file already exists at the destination, it is backed up to
 `~/.dotfiles-backup/<timestamp>/` before the symlink is created.
 
+## Neovim
+
+The config lives in `config/nvim/` and uses Neovim's built-in plugin manager
+(`vim.pack`). On first start it installs plugins, treesitter parsers and the
+Ruff and Lua language servers (via Mason). Plugin versions are pinned in
+`config/nvim/nvim-pack-lock.json`; update them with `:lua vim.pack.update()`.
+
+Rust uses the rustup `rust-analyzer`:
+
+```bash
+rustup component add rust-analyzer rustfmt clippy
+```
+
+Python types/completion use Astral's `ty`, installed with uv:
+
+```bash
+uv tool install ty   # update later with: uv tool upgrade ty
+```
+
 ## Local secrets
 
 Fish loads `~/.config/fish/secrets.fish` when it starts, if the file exists.
@@ -73,5 +92,6 @@ tracked files.
 
 From `Brewfile`:
 
-- **Formulae:** `fish`, `tmux`, `rustup-init`, `uv`
+- **Formulae:** `fish`, `tmux`, `rustup-init`, `uv`, `gh`, `rtk`, `neovim`,
+  `tree-sitter-cli`, `ripgrep`, `fd`, `fzf`
 - **Casks:** `firefox`, `ghostty`, `visual-studio-code`, `zed`

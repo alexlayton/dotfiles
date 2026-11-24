@@ -13,6 +13,14 @@ brew "uv"
 brew "gh"
 brew "rtk"
 
+# Editor: neovim plus the tools its config uses
+# (tree-sitter-cli builds parsers; ripgrep/fd/fzf power the fuzzy finder)
+brew "neovim"
+brew "tree-sitter-cli"
+brew "ripgrep"
+brew "fd"
+brew "fzf"
+
 # Apps
 cask "firefox"
 cask "ghostty"
