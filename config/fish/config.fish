@@ -6,8 +6,8 @@ if test -f "$secrets"
     source "$secrets"
 end
 
-# Default editor — change this to 'zed --wait' if you prefer Zed
-set -gx EDITOR "code --wait"
+# Default editor
+set -gx EDITOR nvim
 
 # Homebrew shellenv support for macOS (Apple Silicon + Intel) and Linuxbrew
 if test -x /opt/homebrew/bin/brew
